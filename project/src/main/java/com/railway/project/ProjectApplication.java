@@ -1,13 +1,13 @@
-package com.javaschool.demo;
+package com.railway.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JorgeRailwayApplication {
+public class ProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JorgeRailwayApplication.class, args);
+		SpringApplication.run(ProjectApplication.class, args);
 	}
 
 }

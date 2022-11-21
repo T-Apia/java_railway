@@ -1,10 +1,10 @@
-package com.javaschool.demo;
+package com.railway.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JorgeRailwayApplicationTests {
+class ProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
