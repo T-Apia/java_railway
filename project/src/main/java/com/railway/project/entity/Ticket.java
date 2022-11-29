@@ -1,7 +1,6 @@
 package com.railway.project.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 public class Ticket {
@@ -10,21 +9,27 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "ticket")
+    @ManyToOne()
+    @JoinColumn(name = "passenger_id",insertable = false, updatable = false)
     private Passenger passenger;
 
     @ManyToOne()
-    @JoinColumn(name = "route_id")
+    @JoinColumn(name = "route_id",insertable = false, updatable = false)
     private Route route;
 
-    private java.sql.Date departure;
+    @ManyToOne()
+    @JoinColumn(name = "user_id",insertable = false, updatable = false)
+    private User user;
+
+    private java.time.Instant departure;
 
     public Ticket() {}
 
-    public Ticket(Passenger passenger, Route route, java.sql.Date departure) {
+    public Ticket(Passenger passenger, Route route, User user, java.time.Instant departure) {
         this.passenger = passenger;
         this.route = route;
         this.departure = departure;
+        this.user = user;
     }
 
     public Long getId() {
@@ -51,11 +56,18 @@ public class Ticket {
         return route;
     }
 
-    public void setDeparture(Date departure) {
+    public void setDeparture(java.time.Instant departure) {
         this.departure = departure;
     }
-    public Date getDeparture() {
+    public java.time.Instant getDeparture() {
         return departure;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

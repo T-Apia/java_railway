@@ -1,6 +1,7 @@
 package com.railway.project.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -12,8 +13,11 @@ public class User {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role")
+    @JoinColumn(name = "role",insertable = false, updatable = false)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> tickets;
 
     public User() {}
 

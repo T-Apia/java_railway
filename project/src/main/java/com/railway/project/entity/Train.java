@@ -2,7 +2,7 @@ package com.railway.project.entity;
 
 
 import javax.persistence.*;
-import java.util.Set;
+import java.time.Instant;
 
 @Entity
 public class Train {
@@ -11,20 +11,20 @@ public class Train {
     private Long id;
 
     private String name;
-    @ManyToMany
-    @JoinTable(name = "route_id",
-            joinColumns = @JoinColumn(name = "train_id"),
-            inverseJoinColumns = @JoinColumn(name = "route_id"))
-    Set<Route> route_id;
+    @ManyToOne
+    @JoinColumn(name = "route_id",insertable = false, updatable = false)
+    private Route route;
     private Integer seats;
+    private java.time.Instant departure;
 
 
     public Train() {}
 
-    public Train(String name, Set route_id, Integer seats) {
+    public Train(String name, Route route, Integer seats, java.time.Instant departure) {
         this.name= name;
-        this.route_id = route_id;
+        this.route = route;
         this.seats = seats;
+        this.departure = departure;
 
     }
 
@@ -44,12 +44,12 @@ public class Train {
         return name;
     }
 
-    public void setRoute_id(Set route_id) {
-        this.route_id = route_id;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
-    public Set getRoute_id() {
-        return route_id;
+    public Route getRoute() {
+        return route;
     }
 
     public void setSeats(Integer seats) {
@@ -59,4 +59,14 @@ public class Train {
     public Integer getSeats() {
         return seats;
     }
+
+    public Instant getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(Instant departure) {
+        this.departure = departure;
+    }
 }
+
+

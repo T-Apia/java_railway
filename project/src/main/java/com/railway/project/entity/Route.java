@@ -2,7 +2,6 @@ package com.railway.project.entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Route {
@@ -12,16 +11,24 @@ public class Route {
 
     private String name;
 
-    @ManyToMany
-    Set<Train> train_id;
+    @OneToMany(mappedBy = "route")
+    private List<Train> trains;
 
     @OneToMany(mappedBy = "route")
-    private List<Ticket> ticket;
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "route")
+    private List<Segment> segments;
+
 
     public Route () {}
 
-    public Route(String name){
+    public Route(String name, List trains, List tickets, List segments){
+
         this.name = name;
+        this.trains = trains;
+        this.tickets = tickets;
+        //this.segments = segments;
     }
 
 
@@ -39,11 +46,27 @@ public class Route {
         return name;
     }
 
-    public Set<Train> getTrain_id() {
-        return train_id;
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
-    public void setTrain_id(Set<Train> train_id) {
-        this.train_id = train_id;
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+//    public void setSegments(List<Segment> segments) {
+//        this.segments = segments;
+//    }
+
+//    public List<Segment> getSegments() {
+//        return segments;
+//    }
+
+    public void setTrains(List<Train> trains) {
+        this.trains = trains;
+    }
+
+    public List<Train> getTrains() {
+        return trains;
     }
 }

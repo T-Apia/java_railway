@@ -1,7 +1,7 @@
 package com.railway.project.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Passenger {
@@ -12,20 +12,27 @@ public class Passenger {
 
     private String name;
     private String surname;
-    private java.sql.Date birthday;
+    private java.time.Instant birthday;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ticket_id", referencedColumnName = "id")
-    private Ticket ticket;
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket> tickets;
 
     public Passenger() {}
 
-    public Passenger(String name, String surname, java.sql.Date birthday, Ticket ticket) {
+    public Passenger(String name, String surname, java.time.Instant birthday, List tickets) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
-        this.ticket = ticket;
+        this.tickets = tickets;
 
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public Long getId() {
@@ -54,19 +61,12 @@ public class Passenger {
         return surname;
     }
 
-    public Date getBirthday() {
+    public java.time.Instant getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(java.time.Instant birthday) {
         this.birthday = birthday;
     }
 
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
 }

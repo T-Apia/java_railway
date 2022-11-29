@@ -1,9 +1,7 @@
 package com.railway.project.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Station {
@@ -14,11 +12,18 @@ public class Station {
 
     private String name;
 
+    @OneToMany(mappedBy = "station_from", targetEntity = com.railway.project.entity.Segment.class)
+    private List<Segment> segments_from;
+
+    @OneToMany(mappedBy = "station_to", targetEntity = com.railway.project.entity.Segment.class)
+    private List<Segment> segments_to;
 
     public Station() {}
 
-    public Station(String name) {
+    public Station(String name, List segments_from, List segments_to) {
         this.name = name;
+        this.segments_from = segments_from;
+        this.segments_to = segments_to;
     }
 
     public long getId() {
@@ -37,6 +42,22 @@ public class Station {
         this.name = name;
     }
 
-    // getters and setters
+    public List<Segment> getSegments_from() {
+        return segments_from;
+    }
+
+    public void setSegments_from(List<Segment> segments_from) {
+        this.segments_from = segments_from;
+    }
+
+    public void setSegments_to(List<Segment> segments_to) {
+        this.segments_to = segments_to;
+    }
+
+    public List<Segment> getSegments_to() {
+        return segments_to;
+    }
+
+
 }
 

@@ -1,7 +1,7 @@
 package com.railway.project.service;
 
 import com.railway.project.entity.Station;
-import com.railway.project.repository.StationRepo;
+import com.railway.project.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,31 +9,31 @@ import java.util.List;
 
 @Service
 public class StationService {
-    private final StationRepo stationRepo;
+    private final StationRepository stationRepository;
 
     @Autowired
-    public StationService(StationRepo stationRepo) {
-        this.stationRepo = stationRepo;
+    public StationService(StationRepository stationRepository) {
+        this.stationRepository = stationRepository;
     }
 
     public Station addStation(Station station) {
         station.setId(station.getId());
-        return (Station) stationRepo.save(station);
+        return (Station) stationRepository.save(station);
     }
 
     public List<Station> findAllStations() {
-        return stationRepo.findAll();
+        return stationRepository.findAll();
     }
 
     public Station updateStation(Station station){
-        return (Station) stationRepo.save(station);
+        return (Station) stationRepository.save(station);
     }
 
     public Station findStationById(Long id) {
-        return stationRepo.findStationById(id); //.orElseThrow()
+        return stationRepository.findStationById(id); //.orElseThrow()
     }
 
     public void deleteStation(Long id){
-        stationRepo.deleteStationById(id);
+        stationRepository.deleteStationById(id);
     }
 }
