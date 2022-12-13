@@ -23,7 +23,8 @@ import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './pages/home/home/home.component';
 import { RoutesComponent } from './pages/routes/routes/routes.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatCardModule } from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     MatListModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [
     AppComponent, HttpClientModule

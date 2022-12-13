@@ -1,4 +1,23 @@
-<p>Routes work!</p>
-<div *ngFor = "let station of stations">
-    <div>  {{station.name}}, <p>'Route:'</p>, {{station.segments_from}}, {{station.segments_to}} </div>
-</div>
+<!--- <div class="column">
+    <div class="row">
+        <mat-card *ngFor="let station of stations" class="example-card">
+            <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{station.name}}</mat-card-title>
+            <mat-card-subtitle>Main station</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="card-img-top" width="100">
+            <mat-card-content>
+            
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button>INFO</button>
+            <button mat-button>TICKETS</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+  </div> --->
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let station of stations">{{station.name}}</mat-list-item>
+  </mat-list>
