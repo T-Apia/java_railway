@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @Transactional
 @RequestMapping("/station")
@@ -23,7 +24,7 @@ public class StationController {
  //   public StationController(StationController stationController) {
  //       this.stationController = stationController;
  //   }
-
+    @CrossOrigin("*")
     @GetMapping("/all")
     public ResponseEntity<List<Station>> getAllStations(){
         List<Station> stations = service.findAllStations();
