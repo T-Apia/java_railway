@@ -2,8 +2,8 @@ import { StationService } from './services/station/station.service';
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +24,16 @@ import { HomeComponent } from './pages/home/home/home.component';
 import { RoutesComponent } from './pages/routes/routes/routes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
 
 
 @NgModule({
@@ -48,7 +57,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTableModule,
     HttpClientModule,
     MatCardModule,
-    MatGridListModule
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [
     AppComponent, HttpClientModule
