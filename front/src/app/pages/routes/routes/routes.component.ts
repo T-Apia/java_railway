@@ -1,9 +1,12 @@
 import { StationService } from './../../../services/station/station.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Station } from 'src/app/models/station';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgZone } from '@angular/core';
+
 
 @Component({
   selector: 'app-routes',
@@ -17,7 +20,10 @@ export class RoutesComponent implements OnInit {
   options: string[] = ['Madrid', 'Barcelona', 'Granada'];
   filteredOptions: Observable<string[]> | undefined;
 
-  constructor(private StationService: StationService){}
+  constructor(private StationService: StationService,
+    public dialog: MatDialog,
+    private zone: NgZone){}
+  
 
   ngOnInit(): void {
       this.getStations();
@@ -25,6 +31,7 @@ export class RoutesComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value || '')),
       );
+      this.openSearch();
       
   }
   public _filter(value: string): string[] {
@@ -46,6 +53,28 @@ export class RoutesComponent implements OnInit {
       }
     )
   }
-  
-
+  public openSearch() {
+    this.zone.run(() => {
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          animal: 'panda',
+        },
+        width: '250px' 
+      });
+      console.log("This works!")
+    });
+  }
 }
+
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
+
+@Component({
+  selector: 'dialog',
+  templateUrl: 'dialog.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+}
+

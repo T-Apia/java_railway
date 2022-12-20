@@ -12,7 +12,7 @@ public class Segment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne()
-    @JoinColumn(name = "route_id") //,insertable = false, updatable = false
+    @JoinColumn(name = "route_id" ,insertable = false, updatable = false)
     private Route route;
 
     @ManyToOne()
@@ -21,17 +21,19 @@ public class Segment {
     @ManyToOne()
     @JoinColumn(name = "station_to",insertable = false, updatable = false)
     private Station station_to;
-    private java.time.Duration duration;
+    private String duration;
     private Long distance;
 
     public Segment() {}
-    public Segment(Route route, Station station_from, Station station_to, java.time.Duration duration, Long Distance) {
+    public Segment(Route route, Station station_from, Station station_to, String duration, Long distance) {
 
-        //this.route = route;
+        this.distance = distance;
+        this.duration = duration;
+        this.route = route;
         this.station_from = station_from;
         this.station_to = station_to;
-        this.duration = duration;
-        this.distance = distance;
+
+
     }
 
     public void setId(Long id) {
@@ -42,11 +44,11 @@ public class Segment {
         return id;
     }
 
-    public void setDuration(java.time.Duration duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
-    public java.time.Duration getDuration() {
+    public String getDuration() {
         return duration;
     }
 

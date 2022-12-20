@@ -21,6 +21,7 @@ public class Station {
     public Station() {}
 
     public Station(String name, List segments_from, List segments_to) {
+        this.id = id;
         this.name = name;
         this.segments_from = segments_from;
         this.segments_to = segments_to;
