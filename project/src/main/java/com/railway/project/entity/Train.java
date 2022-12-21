@@ -20,12 +20,12 @@ public class Train {
 
     public Train() {}
 
-    public Train(String name, Route route, Integer seats, java.time.Instant departure) {
+    public Train(Long id, String name, Route route, Integer seats, java.time.Instant departure) {
+        this.id = id;
         this.name= name;
         this.route = route;
         this.seats = seats;
         this.departure = departure;
-
     }
 
     public void setId(Long id) {

@@ -25,8 +25,9 @@ public class Segment {
     private Long distance;
 
     public Segment() {}
-    public Segment(Route route, Station station_from, Station station_to, String duration, Long distance) {
+    public Segment(Long id, Route route, Station station_from, Station station_to, String duration, Long distance) {
 
+        this.id =id;
         this.distance = distance;
         this.duration = duration;
         this.route = route;

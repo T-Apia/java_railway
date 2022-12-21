@@ -9,9 +9,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar/toolbar.component';
 
 import { MatToolbarModule } from  '@angular/material/toolbar';
+import { MatTooltipModule } from  '@angular/material/tooltip';
+
 import { MatCommonModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -32,6 +33,10 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AccountComponent } from './pages/account/account/account.component';
+import { ResultComponent } from './pages/result/result.component';
 
 
 
@@ -39,15 +44,17 @@ import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
     HomeComponent,
-    RoutesComponent
+    RoutesComponent,
+    AccountComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatCommonModule,
     MatIconModule,
     MatSidenavModule,
@@ -66,7 +73,9 @@ import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
     MatNativeDateModule,
     MatGridListModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatSnackBarModule
   ],
   providers: [
     AppComponent, HttpClientModule

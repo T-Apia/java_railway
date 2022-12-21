@@ -23,12 +23,13 @@ public class Route {
 
     public Route () {}
 
-    public Route(String name, List trains, List tickets, List segments){
+    public Route(Long id, String name, List trains, List tickets, List segments){
 
+        this.id = id;
         this.name = name;
         this.trains = trains;
         this.tickets = tickets;
-        //this.segments = segments;
+        this.segments = segments;
     }
 
 
@@ -54,13 +55,13 @@ public class Route {
         return tickets;
     }
 
-//    public void setSegments(List<Segment> segments) {
-//        this.segments = segments;
-//    }
+    public void setSegments(List<Segment> segments) {
+        this.segments = segments;
+    }
 
-//    public List<Segment> getSegments() {
-//        return segments;
-//    }
+    public List<Segment> getSegments() {
+        return segments;
+    }
 
     public void setTrains(List<Train> trains) {
         this.trains = trains;
